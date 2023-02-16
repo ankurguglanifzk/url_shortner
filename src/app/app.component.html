@@ -1,0 +1,48 @@
+<div *ngIf="isLoggedIn()">
+  <button (click)="logout()">Logout from Google</button>
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.5">
+    <title>URL Shortener</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>URL Shortener</h1>
+      <img src="../assets/images/url shortner.png" class="img1" alt="cinque terre">
+    </header>
+    <nav>
+      <ul>
+        <li><button (click)="reset()">Home</button></li>
+
+        <li><button (click)="toggleContact()">
+            {{ showContact ? 'Hide Contact Information' : 'Contact Us' }}
+          </button>
+          <div *ngIf="showContact">
+            <h2>Contact Information</h2>
+            <p>Name: {{Name}}</p>
+            <p>Email: {{Email}}</p>
+            <p>Address: {{Address}}</p>
+            <p>Mobile: {{Mobile}}</p>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <main>
+
+      <div class="container">
+        <div class="box">
+          <input type="url" class="input" id="original_link" placeholder="Enter the original link"
+            [(ngModel)]="longUrl">
+          <button (click)="generateShortUrl()">Generate</button>
+        </div>
+        <div class="box">
+          <input type="url" class="input" id="shorten_link" placeholder="Shortened link will appear here"
+            [(ngModel)]="shortUrl" readonly>
+          <button class="output" id="copy" (click)="copyToClipboard()">Copy</button>
+        </div>
+      </div>
+    </main>
+  </body>
+</div>
